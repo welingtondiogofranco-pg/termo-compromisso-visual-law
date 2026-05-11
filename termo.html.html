@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termo de Compromisso - UEPG</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            color: #222;
+            line-height: 1.7;
+            background: #f5f5f5;
+        }
+        .page {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 50px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.10);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 20px;
+            margin-bottom: 35px;
+        }
+        .header-logos {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+        .header-logos img {
+            height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+        .header-text {
+            text-align: right;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+        .header-text strong { font-size: 18px; }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+        h2 {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+        h3 { margin-top: 20px; margin-bottom: 8px; font-size: 16px; }
+        p { text-align: justify; margin-bottom: 14px; }
+        .editable {
+            display: inline-block;
+            min-width: 150px;
+            border-bottom: 1px solid #000;
+            padding: 2px 4px;
+            outline: none;
+            white-space: pre-wrap;
+            overflow-wrap: break-word;
+            vertical-align: bottom;
+            transition: background 0.2s;
+        }
+        .editable:focus { background: #eef5ff; }
+        .editable:empty::before {
+            content: attr(data-placeholder);
+            color: #999;
+            font-style: italic;
+            pointer-events: none;
+        }
+        .small { min-width: 80px; }
+        .medium { min-width: 250px; }
+        .large { min-width: 400px; }
+        input[type="date"], input[type="number"] {
+            border: none;
+            border-bottom: 1px solid #000;
+            padding: 4px;
+            font-size: 15px;
+            outline: none;
+            background: transparent;
+        }
+        .alert-box {
+            background: #fff8e1;
+            border-left: 5px solid #ffa000;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .alert-box p { margin: 8px 0; text-align: left; }
+        .highlight-warning {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 12px 18px;
+            margin: 18px 0;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .highlight-warning::before { content: "💰"; font-size: 1.5em; }
+        .signature-area { margin-top: 80px; }
+        .signature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 50px;
+        }
+        .signature-box { text-align: center; }
+        .signature-line {
+            border-top: 1px solid #000;
+            margin-top: 60px;
+            padding-top: 10px;
+        }
+        @media print {
+            body { margin: 0; background: #fff; }
+            .page { max-width: 100%; box-shadow: none; padding: 15mm; }
+            h1, h2, h3, p, div { page-break-inside: avoid; }
+            .editable:empty::before { content: ""; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <div class="header">
+        <div class="header-logos">
+            <img src="UEPG.jpg" alt="UEPG"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+            <span style="display:none; height:70px; line-height:70px; font-weight:bold; color:#003366;">[UEPG]</span>
+        </div>
+        <div class="header-text">
+            <strong>Universidade Estadual de Ponta Grossa</strong><br>
+            Programa de Mestrado Profissional em Direito
+        </div>
+    </div>
+
+    <h1>TERMO DE COMPROMISSO PARA REALIZAÇÃO DE<br>ESTÁGIO DE IMERSÃO PRÁTICO-INSTITUCIONAL</h1>
+
+    <p>
+        A Universidade Estadual de Ponta Grossa – UEPG, entidade autárquica da Administração Indireta do Poder Executivo Estadual, dotada de personalidade jurídica de direito público, criada pelo Governo do Estado do Paraná, através da Lei n. 6.034, de 6 de novembro de 1969 e Decreto n. 18.111, de 28 de janeiro de 1970, inscrita no CNPJ sob n. 80.257.355/0001-08, com sede na Avenida General Carlos Cavalcanti, 4748, na cidade de Ponta Grossa, Estado do Paraná, por meio do Programa de Mestrado Profissional em Direito, neste ato representado pelo seu Coordenador, Professor Doutor
+        <span class="editable medium" contenteditable="true" data-placeholder="Nome do Coordenador"></span>,
+        doravante denominada UEPG.
+    </p>
+
+    <p>
+        A Entidade/Instituição
+        <span class="editable large" contenteditable="true" data-placeholder="Nome da Entidade/Instituição"></span>,
+        neste ato representada por
+        <span class="editable medium" contenteditable="true" data-placeholder="Nome do Representante Legal"></span>,
+        doravante denominada PARTE SUPERVISORA.
+    </p>
+
+    <p>
+        O(a) mestrando(a)
+        <span class="editable large" contenteditable="true" data-placeholder="Nome completo do(a) discente"></span>,
+        portador(a) da Cédula de Identidade (RG) nº
+        <span class="editable small" contenteditable="true" data-placeholder="00.000.000-0"></span>,
+        órgão emissor
+        <span class="editable small" contenteditable="true" data-placeholder="SSP/PR"></span>,
+        CPF nº
+        <span class="editable medium" contenteditable="true" data-placeholder="000.000.000-00"></span>,
+        regularmente matriculado(a) no Curso de Mestrado Profissional em Direito da Universidade Estadual de Ponta Grossa sob o RA nº
+        <span class="editable small" contenteditable="true" data-placeholder="Nº RA"></span>,
+        resolve firmar o presente Termo de Compromisso.
+    </p>
+
+    <h2>CLÁUSULA PRIMEIRA – DO OBJETO</h2>
+    <p>Constitui objeto do presente Termo a realização, por parte do(a) DISCENTE, de estágio de imersão prático-institucional na PARTE SUPERVISORA, conforme previsão no Regulamento do Programa Profissional de Pós-Graduação Stricto Sensu em Direito – Curso de Mestrado.</p>
+
+    <h2>CLÁUSULA SEGUNDA – DO OBJETIVO</h2>
+    <p>O estágio de imersão prático-institucional compreende a realização de interação e vivência em ambiente profissional ou institucional relevante para o tema da pesquisa do(a) discente e o problema prático que ela procurará enfrentar.</p>
+
+    <h2>CLÁUSULA TERCEIRA – DA EXECUÇÃO</h2>
+    <p>O estágio de imersão prático-institucional será desenvolvido conforme Projeto de Execução de Atividades de Imersão Prático-Institucional.</p>
+
+    <h3>Parágrafo Primeiro</h3>
+    <p>As atividades desenvolvidas poderão ser revistas mediante Termos Aditivos.</p>
+    <h3>Parágrafo Segundo</h3>
+    <p>É vedada a exigência de atividades estranhas ao Projeto de Execução.</p>
+    <h3>Parágrafo Terceiro</h3>
+    <p>É vedado ao(à) DISCENTE realizar atividades diversas sem anuência da UNIDADE SUPERVISORA.</p>
+    <h3>Parágrafo Quarto</h3>
+    <p>
+        O estágio terá acompanhamento do(a) professor(a)-orientador(a)
+        <span class="editable large" contenteditable="true" data-placeholder="Nome do(a) orientador(a)"></span>,
+        lotado(a) no Departamento de
+        <span class="editable medium" contenteditable="true" data-placeholder="Departamento"></span>.
+    </p>
+    <h3>Parágrafo Quinto</h3>
+    <p>
+        O estágio será realizado perfazendo um total de
+        <input type="number" min="0" max="60" placeholder="0">
+        <strong> horas (máx. 60 horas)</strong>.
+    </p>
+
+    <h2>CLÁUSULA QUARTA – DA INEXISTÊNCIA DE VÍNCULO E REMUNERAÇÃO</h2>
+    <div class="highlight-warning">
+        <span>Este estágio <strong>NÃO</strong> é remunerado e <strong>NÃO</strong> gera vínculo empregatício de qualquer natureza entre o(a) DISCENTE e a UEPG ou a UNIDADE SUPERVISORA.</span>
+    </div>
+    <p>O(A) próprio(a) mestrando(a) deverá contratar seguro de acidentes pessoais, caso deseje.</p>
+
+    <h2>CLÁUSULA QUINTA – DOS TERMOS ADITIVOS</h2>
+    <p>O presente Termo de Compromisso poderá ser alterado mediante termos aditivos.</p>
+
+    <h2>CLÁUSULA SEXTA – DA VIGÊNCIA</h2>
+    <p>O presente Termo terá vigência a partir de sua assinatura:</p>
+    <p>
+        Início: <input type="date">
+        &nbsp;&nbsp;&nbsp;
+        Término: <input type="date">
+    </p>
+    <p>
+        A comunicação oficial deverá ser encaminhada à
+        <span class="editable large" contenteditable="true" data-placeholder="Endereço/e-mail para notificação"></span>.
+    </p>
+
+    <h2>CLÁUSULA SÉTIMA – DO ENCERRAMENTO</h2>
+    <div class="alert-box">
+        <p><strong>⚠️ Motivos para encerramento automático do presente Termo:</strong></p>
+        <p>I – término da vigência estipulada entre as partes;</p>
+        <p>II – conclusão do Curso de Mestrado Profissional em Direito;</p>
+        <p>III – abandono das atividades (falta injustificada superior a 20% da carga horária);</p>
+        <p>IV – descumprimento do convencionado neste Termo.</p>
+    </div>
+
+    <h2>CLÁUSULA OITAVA – DO FORO</h2>
+    <p>As partes elegem o foro da Comarca de Ponta Grossa para dirimir quaisquer dúvidas provenientes deste instrumento.</p>
+    <p>E, por estarem justas e contratadas, firmam o presente Termo de Compromisso para que produza seus legais e jurídicos efeitos.</p>
+
+    <div class="signature-area">
+        <p>Ponta Grossa, <input type="date"></p>
+        <div class="signature-grid">
+            <div class="signature-box"><div class="signature-line">Coordenador do Programa</div></div>
+            <div class="signature-box"><div class="signature-line">Representante da Unidade Supervisora</div></div>
+            <div class="signature-box"><div class="signature-line">Discente</div></div>
+            <div class="signature-box"><div class="signature-line">Professor(a) Orientador(a)</div></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
