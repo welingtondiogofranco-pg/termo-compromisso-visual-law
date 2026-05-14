@@ -20,11 +20,12 @@
             padding: 50px;
             box-shadow: 0 0 12px rgba(0, 0, 0, 0.10);
         }
+
+        /* CABEÇALHO – LOGOS DISTRIBUÍDAS */
         .header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            gap: 20px;
             border-bottom: 2px solid #000;
             padding-bottom: 20px;
             margin-bottom: 35px;
@@ -32,6 +33,8 @@
         .header-logos {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            width: 100%;
             gap: 18px;
         }
         .header-logos img {
@@ -39,12 +42,7 @@
             width: auto;
             object-fit: contain;
         }
-        .header-text {
-            text-align: right;
-            line-height: 1.4;
-            font-size: 14px;
-        }
-        .header-text strong { font-size: 18px; }
+
         h1 {
             text-align: center;
             font-size: 24px;
@@ -60,6 +58,8 @@
         }
         h3 { margin-top: 20px; margin-bottom: 8px; font-size: 16px; }
         p { text-align: justify; margin-bottom: 14px; }
+
+        /* CAMPOS EDITÁVEIS */
         .editable {
             display: inline-block;
             min-width: 150px;
@@ -81,6 +81,7 @@
         .small { min-width: 80px; }
         .medium { min-width: 250px; }
         .large { min-width: 400px; }
+
         input[type="date"], input[type="number"] {
             border: none;
             border-bottom: 1px solid #000;
@@ -89,6 +90,8 @@
             outline: none;
             background: transparent;
         }
+
+        /* DESTAQUES VISUAIS */
         .alert-box {
             background: #fff8e1;
             border-left: 5px solid #ffa000;
@@ -109,6 +112,8 @@
             gap: 10px;
         }
         .highlight-warning::before { content: "💰"; font-size: 1.5em; }
+
+        /* ASSINATURAS */
         .signature-area { margin-top: 80px; }
         .signature-grid {
             display: grid;
@@ -122,6 +127,8 @@
             margin-top: 60px;
             padding-top: 10px;
         }
+
+        /* IMPRESSÃO */
         @media print {
             body { margin: 0; background: #fff; }
             .page { max-width: 100%; box-shadow: none; padding: 15mm; }
@@ -134,15 +141,23 @@
 
 <div class="page">
 
+    <!-- CABEÇALHO: ESQUERDA = SECIJUR | CENTRO = UEPG | DIREITA = CEPPODI -->
     <div class="header">
         <div class="header-logos">
+            <!-- ESQUERDA: SECIJUR -->
+            <img src="secijur.png" alt="SECIJUR"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+            <span style="display:none; height:70px; line-height:70px; font-weight:bold; color:#003366;">[SECIJUR]</span>
+
+            <!-- CENTRO: UEPG -->
             <img src="UEPG.jpg" alt="UEPG"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
             <span style="display:none; height:70px; line-height:70px; font-weight:bold; color:#003366;">[UEPG]</span>
-        </div>
-        <div class="header-text">
-            <strong>Universidade Estadual de Ponta Grossa</strong><br>
-            Programa de Mestrado Profissional em Direito
+
+            <!-- DIREITA: CEPPODI -->
+            <img src="ceppodi.png" alt="CEPPODI"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
+            <span style="display:none; height:70px; line-height:70px; font-weight:bold; color:#003366;">[CEPPODI]</span>
         </div>
     </div>
 
@@ -202,7 +217,8 @@
     <p>
         O estágio será realizado perfazendo um total de
         <input type="number" min="0" max="60" placeholder="0">
-        <strong> horas (máx. 60 horas)</strong>, distribuídas por todo o período de imersão.    </p>
+        <strong> horas (máx. 60 horas)</strong>, distribuídas por todo o período de imersão.
+    </p>
 
     <h2>CLÁUSULA QUARTA – DA INEXISTÊNCIA DE VÍNCULO E REMUNERAÇÃO</h2>
     <div class="highlight-warning">
@@ -213,13 +229,15 @@
     <h2>CLÁUSULA QUINTA – DOS TERMOS ADITIVOS</h2>
     <p>O presente Termo de Compromisso poderá ser alterado mediante termos aditivos.</p>
 
+    <!-- CLÁUSULA SEXTA CORRIGIDA -->
     <h2>CLÁUSULA SEXTA – DA VIGÊNCIA</h2>
     <p>O presente Termo terá vigência a partir de sua assinatura:</p>
     <p>
         Início: <input type="date">
         &nbsp;&nbsp;&nbsp;
-        Término: <input type="date">, com duração máxima de 2 (dois) anos. </p>
+        Término: <input type="date">, com duração máxima de 2 (dois) anos.
     </p>
+    <p>
         Qualquer das partes pode encerrar o Termo a qualquer momento, de forma unilateral, desde que faça uma comunicação escrita e oficial à outra parte, com pelo menos 10 (dez) dias de antecedência.
     </p>
 
