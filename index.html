@@ -128,19 +128,78 @@
             padding-top: 10px;
         }
 
+        /* ===== ACESSIBILIDADE eMAG ===== */
+        /* Link pular para o conteúdo (só visível ao receber foco) */
+        .skip-to-content {
+            position: absolute;
+            left: -9999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 12px;
+            z-index: 1000;
+        }
+        .skip-to-content:focus {
+            left: 10px;
+            top: 10px;
+            width: auto;
+            height: auto;
+        }
+        /* Barra de atalhos de acessibilidade (opcional) */
+        .accessibility-shortcuts {
+            background: #f0f4f8;
+            padding: 8px 20px;
+            font-size: 0.85rem;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        .accessibility-shortcuts a {
+            margin: 0 10px;
+            color: #0369a1;
+            text-decoration: none;
+        }
+        .accessibility-shortcuts a:hover {
+            text-decoration: underline;
+        }
+        /* Rodapé de informações de acessibilidade */
+        .acessibilidade-info {
+            margin-top: 40px;
+            font-size: 0.8rem;
+            border-top: 1px solid #ddd;
+            padding-top: 15px;
+            color: #555;
+            text-align: center;
+        }
+
         /* IMPRESSÃO */
         @media print {
             body { margin: 0; background: #fff; }
             .page { max-width: 100%; box-shadow: none; padding: 15mm; }
             h1, h2, h3, p, div { page-break-inside: avoid; }
             .editable:empty::before { content: ""; }
+            .accessibility-shortcuts, .acessibilidade-info, .skip-to-content { display: none; }
         }
     </style>
 </head>
 <body>
 
-<div class="page">
+<!-- ===== ACESSIBILIDADE eMAG: LINK PULAR CONTEÚDO ===== -->
+<a href="#conteudo-principal" class="skip-to-content" accesskey="1" title="Ir para o conteúdo principal (Alt + 1)">Pular para o conteúdo principal</a>
 
+<!-- ===== eMAG: ATALHOS DE TECLADO (barra visual) ===== -->
+<div class="accessibility-shortcuts" aria-label="Atalhos de acessibilidade do teclado">
+    <span>🔑 Atalhos:</span>
+    <a href="#conteudo-principal" accesskey="1">Alt + 1</a> = ir para o conteúdo |
+    <a href="#rodape-acessibilidade" accesskey="4">Alt + 4</a> = ir para o rodapé |
+    <a href="#info-acessibilidade" accesskey="0">Alt + 0</a> = acessibilidade
+</div>
+
+<div class="page" id="conteudo-principal" tabindex="-1">
     <!-- CABEÇALHO: ESQUERDA = SECIJUR | CENTRO = UEPG | DIREITA = CEPPODI -->
     <div class="header">
         <div class="header-logos">
@@ -264,9 +323,25 @@
         </div>
     </div>
 
+</div> <!-- fim .page -->
+
+<!-- ===== RODAPÉ COM INFORMAÇÕES DE ACESSIBILIDADE ===== -->
+<div id="rodape-acessibilidade" class="acessibilidade-info" tabindex="-1">
+    <div id="info-acessibilidade">
+        <strong>📌 Acessibilidade – Atalhos do teclado (eMAG):</strong><br>
+        • <kbd>Alt + 1</kbd> – Ir para o conteúdo principal<br>
+        • <kbd>Alt + 4</kbd> – Ir para este rodapé<br>
+        • <kbd>Alt + 0</kbd> – Ir para as informações de acessibilidade<br>
+        <br>
+        <strong>🔊 Ferramentas disponíveis nesta página:</strong><br>
+        ✓ <strong>VLibras</strong> – Tradutor para Língua Brasileira de Sinais (clique no ícone flutuante)<br>
+        ✓ <strong>UserWay</strong> – Painel de acessibilidade com ajustes de contraste, fonte, espaçamento, leitor de tela etc. (clique no ícone de pessoa com deficiência)<br>
+        <br>
+        <em>Este documento segue as diretrizes da Lei Brasileira de Inclusão (LBI) e do Modelo de Acessibilidade em Governo Eletrônico (eMAG).</em>
+    </div>
 </div>
 
-<!-- ========== INÍCIO DO CÓDIGO VLIBRAS (INSERIDO SEM PREJUIZOS) ========== -->
+<!-- ========== VLIBRAS ========== -->
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
@@ -275,12 +350,21 @@
 </div>
 <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 <script>
-    // Aguarda o DOM totalmente carregado para evitar qualquer conflito
     document.addEventListener("DOMContentLoaded", function() {
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     });
 </script>
-<!-- ========== FIM DO CÓDIGO VLIBRAS ========== -->
+
+<!-- ========== USERWAY (versão gratuita) ========== -->
+<!-- 
+    Para usar o UserWay gratuitamente:
+    1. Acesse https://userway.org/ e cadastre seu site (plano gratuito).
+    2. Após o cadastro, você receberá um código de identificação (data-account).
+    3. Substitua "SEU_ID_AQUI" pelo seu código.
+    4. O widget aparecerá como um ícone flutuante (geralmente no canto inferior esquerdo).
+-->
+<script src="https://cdn.userway.org/widget.js" data-account="SEU_ID_AQUI"></script>
+<!-- IMPORTANTE: para testes, você pode remover a linha acima e ativar o UserWay apenas após obter seu ID. -->
 
 </body>
 </html>
