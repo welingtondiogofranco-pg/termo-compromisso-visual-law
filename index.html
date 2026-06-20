@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Termo de Compromisso - UEPG</title>
+    <title>Anexo III - Termo de Compromisso - Estágio de Imersão - UEPG</title>
     <style>
         * { box-sizing: border-box; }
         body {
@@ -20,6 +20,26 @@
             padding: 50px;
             box-shadow: 0 0 12px rgba(0, 0, 0, 0.10);
         }
+
+        /* BOTÃO DE IMPRESSÃO - FIXO NO TOPO */
+        .btn-imprimir {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #003366;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+        .btn-imprimir:hover { background: #002244; }
+        .btn-imprimir::before { content: "🖨️ "; }
 
         /* CABEÇALHO – LOGOS DISTRIBUÍDAS */
         .header {
@@ -45,50 +65,110 @@
 
         h1 {
             text-align: center;
-            font-size: 24px;
+            font-size: 20px;
             margin-bottom: 35px;
             text-transform: uppercase;
             line-height: 1.4;
+            font-weight: bold;
         }
         h2 {
             margin-top: 30px;
             margin-bottom: 10px;
-            font-size: 18px;
+            font-size: 16px;
             text-transform: uppercase;
+            font-weight: bold;
         }
-        h3 { margin-top: 20px; margin-bottom: 8px; font-size: 16px; }
+        h3 { margin-top: 20px; margin-bottom: 8px; font-size: 14px; font-weight: bold; }
         p { text-align: justify; margin-bottom: 14px; }
 
-        /* CAMPOS EDITÁVEIS */
-        .editable {
+        /* ✅ CAMPOS FIXOS - CORREÇÃO APLICADA */
+        .campo-fixo {
             display: inline-block;
-            min-width: 150px;
             border-bottom: 1px solid #000;
-            padding: 2px 4px;
+            padding: 2px 6px;
             outline: none;
-            white-space: pre-wrap;
-            overflow-wrap: break-word;
-            vertical-align: bottom;
+            min-height: 24px;
+            max-height: 48px;
+            line-height: 1.4;
+            background: transparent;
             transition: background 0.2s;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            vertical-align: baseline;
         }
-        .editable:focus { background: #eef5ff; }
-        .editable:empty::before {
+        
+        /* Tamanhos específicos e FIXOS para cada tipo de campo */
+        .campo-nome { 
+            width: 300px;
+            max-width: 300px;
+            min-width: 300px;
+        }
+        .campo-nome-longo { 
+            width: 400px;
+            max-width: 400px;
+            min-width: 400px;
+        }
+        .campo-rg { 
+            width: 130px;
+            max-width: 130px;
+            min-width: 130px;
+        }
+        .campo-cpf { 
+            width: 140px;
+            max-width: 140px;
+            min-width: 140px;
+        }
+        .campo-ra { 
+            width: 110px;
+            max-width: 110px;
+            min-width: 110px;
+        }
+        .campo-data { 
+            width: 150px;
+            max-width: 150px;
+            min-width: 150px;
+        }
+        .campo-horas { 
+            width: 70px;
+            max-width: 70px;
+            min-width: 70px;
+            text-align: center;
+        }
+        .campo-orgao { 
+            width: 120px;
+            max-width: 120px;
+            min-width: 120px;
+        }
+        .campo-depto { 
+            width: 250px;
+            max-width: 250px;
+            min-width: 250px;
+        }
+        
+        .campo-fixo:focus { 
+            background: #eef5ff; 
+            border-bottom-color: #003366;
+        }
+        .campo-fixo:empty::before {
             content: attr(data-placeholder);
             color: #999;
             font-style: italic;
             pointer-events: none;
         }
-        .small { min-width: 80px; }
-        .medium { min-width: 250px; }
-        .large { min-width: 400px; }
 
         input[type="date"], input[type="number"] {
-            border: none;
-            border-bottom: 1px solid #000;
-            padding: 4px;
-            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 14px;
             outline: none;
-            background: transparent;
+            background: #fff;
+            font-family: inherit;
+        }
+        input[type="date"]:focus, input[type="number"]:focus {
+            border-color: #003366;
+            box-shadow: 0 0 0 2px rgba(0,51,102,0.1);
         }
 
         /* DESTAQUES VISUAIS */
@@ -102,14 +182,15 @@
         .alert-box p { margin: 8px 0; text-align: left; }
         .highlight-warning {
             background: #fff3cd;
-            border: 1px solid #ffc107;
+            border: 2px solid #ffc107;
             border-radius: 8px;
-            padding: 12px 18px;
-            margin: 18px 0;
+            padding: 15px 20px;
+            margin: 20px 0;
             font-weight: bold;
             display: flex;
             align-items: center;
             gap: 10px;
+            text-align: left;
         }
         .highlight-warning::before { content: "💰"; font-size: 1.5em; }
 
@@ -126,10 +207,10 @@
             border-top: 1px solid #000;
             margin-top: 60px;
             padding-top: 10px;
+            font-size: 14px;
         }
 
         /* ===== ACESSIBILIDADE eMAG ===== */
-        /* Link pular para o conteúdo (só visível ao receber foco) */
         .skip-to-content {
             position: absolute;
             left: -9999px;
@@ -149,7 +230,6 @@
             width: auto;
             height: auto;
         }
-        /* Barra de atalhos de acessibilidade (opcional) */
         .accessibility-shortcuts {
             background: #f0f4f8;
             padding: 8px 20px;
@@ -166,7 +246,6 @@
         .accessibility-shortcuts a:hover {
             text-decoration: underline;
         }
-        /* Rodapé de informações de acessibilidade */
         .acessibilidade-info {
             margin-top: 40px;
             font-size: 0.8rem;
@@ -176,22 +255,150 @@
             text-align: center;
         }
 
-        /* IMPRESSÃO */
+        /* ✅ IMPRESSÃO - SOLUÇÃO COMPLETA E DEFINITIVA */
         @media print {
-            body { margin: 0; background: #fff; }
-            .page { max-width: 100%; box-shadow: none; padding: 15mm; }
-            h1, h2, h3, p, div { page-break-inside: avoid; }
-            .editable:empty::before { content: ""; }
-            .accessibility-shortcuts, .acessibilidade-info, .skip-to-content { display: none; }
+            @page {
+                size: A4;
+                margin: 15mm;
+            }
+            
+            body { 
+                margin: 0 !important; 
+                background: #fff !important; 
+                padding: 0 !important;
+                color: #000 !important;
+            }
+            
+            .page { 
+                max-width: 100% !important; 
+                box-shadow: none !important; 
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+            
+            /* ✅ OCULTAR TODOS OS ELEMENTOS DE ACESSIBILIDADE E WIDGETS */
+            .btn-imprimir,
+            .accessibility-shortcuts, 
+            .acessibilidade-info, 
+            .skip-to-content,
+            /* VLibras - todos os seletores possíveis */
+            [vw],
+            .vw-enabled,
+            .vw-access-button,
+            .vw-plugin-wrapper,
+            .vw-plugin-top-wrapper,
+            .vpw-container,
+            .vpw-iframe-container,
+            div[style*="vlibras"],
+            div[style*="vw-access"],
+            iframe[src*="vlibras"],
+            iframe[src*="vlibras.gov"],
+            /* UserWay - todos os seletores possíveis */
+            .uwy-userway,
+            .userway-accessibility-widget,
+            [data-account],
+            #userway,
+            div[id*="userway"],
+            div[class*="userway"],
+            iframe[src*="userway"],
+            /* Genérico para qualquer widget flutuante de acessibilidade */
+            [aria-label*="VLibras"],
+            [aria-label*="UserWay"],
+            [aria-label*="acessibilidade"],
+            /* Forçar ocultação de qualquer elemento fixo/absoluto na tela */
+            [style*="position: fixed"],
+            [style*="position:fixed"],
+            [style*="position: absolute"],
+            [style*="position:absolute"] { 
+                display: none !important; 
+                visibility: hidden !important;
+                opacity: 0 !important;
+                height: 0 !important;
+                max-height: 0 !important;
+                width: 0 !important;
+                max-width: 0 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                border: none !important;
+                position: absolute !important;
+                left: -9999px !important;
+                top: -9999px !important;
+                overflow: hidden !important;
+                z-index: -9999 !important;
+                pointer-events: none !important;
+            }
+            
+            /* ✅ CAMPOS FIXOS NA IMPRESSÃO */
+            .campo-fixo {
+                border-bottom: 1px solid #000 !important;
+                background: transparent !important;
+                color: #000 !important;
+                width: auto !important;
+                max-width: none !important;
+                min-width: auto !important;
+                white-space: normal !important;
+                overflow: visible !important;
+                text-overflow: clip !important;
+            }
+            .campo-fixo:empty::before { 
+                content: "_______________________________" !important; 
+                color: #000 !important;
+            }
+            
+            /* ✅ QUEBRAS DE PÁGINA CONTROLADAS */
+            h1, h2, h3, p, div, table { 
+                page-break-inside: avoid !important; 
+            }
+            
+            input[type="date"], input[type="number"] {
+                border: none !important;
+                border-bottom: 1px solid #000 !important;
+                background: transparent !important;
+                color: #000 !important;
+                -webkit-appearance: none !important;
+                appearance: none !important;
+            }
+            
+            .signature-area {
+                page-break-inside: avoid !important;
+                margin-top: 60px !important;
+            }
+            
+            .alert-box, .highlight-warning {
+                background: #fff !important;
+                border: 1px solid #000 !important;
+                color: #000 !important;
+            }
+            
+            .header-logos img {
+                height: 60px !important;
+            }
+        }
+
+        /* RESPONSIVO */
+        @media screen and (max-width: 768px) {
+            body { margin: 10px; }
+            .page { padding: 20px; }
+            .header-logos { flex-direction: column; gap: 10px; }
+            .header-logos img { height: 50px; }
+            .signature-grid { grid-template-columns: 1fr; gap: 30px; }
+            .campo-nome { width: 250px; max-width: 250px; min-width: 250px; }
+            .campo-nome-longo { width: 300px; max-width: 300px; min-width: 300px; }
+            h1 { font-size: 16px; }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== ACESSIBILIDADE eMAG: LINK PULAR CONTEÚDO ===== -->
+<!-- ✅ BOTÃO DE IMPRESSÃO -->
+<button class="btn-imprimir" onclick="imprimirDocumento()" title="Imprimir ou salvar como PDF">
+    Imprimir / Salvar PDF
+</button>
+
+<!-- ✅ ACESSIBILIDADE eMAG: LINK PULAR CONTEÚDO -->
 <a href="#conteudo-principal" class="skip-to-content" accesskey="1" title="Ir para o conteúdo principal (Alt + 1)">Pular para o conteúdo principal</a>
 
-<!-- ===== eMAG: ATALHOS DE TECLADO (barra visual) ===== -->
+<!-- ✅ eMAG: ATALHOS DE TECLADO -->
 <div class="accessibility-shortcuts" aria-label="Atalhos de acessibilidade do teclado">
     <span>🔑 Atalhos:</span>
     <a href="#conteudo-principal" accesskey="1">Alt + 1</a> = ir para o conteúdo |
@@ -200,53 +407,51 @@
 </div>
 
 <div class="page" id="conteudo-principal" tabindex="-1">
-    <!-- CABEÇALHO: ESQUERDA = SECIJUR | CENTRO = UEPG | DIREITA = CEPPODI -->
+    <!-- CABEÇALHO -->
     <div class="header">
         <div class="header-logos">
-            <!-- ESQUERDA: SECIJUR -->
             <img src="secijur.png" alt="SECIJUR"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
             <span style="display:none; height:70px; line-height:70px; font-weight:bold; color:#003366;">[SECIJUR]</span>
 
-            <!-- CENTRO: UEPG -->
             <img src="UEPG.jpg" alt="UEPG"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
             <span style="display:none; height:70px; line-height:70px; font-weight:bold; color:#003366;">[UEPG]</span>
 
-            <!-- DIREITA: CEPPODI -->
             <img src="ceppodi.png" alt="CEPPODI"
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';">
             <span style="display:none; height:70px; line-height:70px; font-weight:bold; color:#003366;">[CEPPODI]</span>
         </div>
     </div>
 
-    <h1>TERMO DE COMPROMISSO PARA REALIZAÇÃO DE<br>ESTÁGIO DE IMERSÃO PRÁTICO-INSTITUCIONAL</h1>
+    <h1>ANEXO III<br>TERMO DE COMPROMISSO PARA REALIZAÇÃO DE<br>ESTÁGIO DE IMERSÃO PRÁTICO-INSTITUCIONAL</h1>
 
     <p>
-        A Universidade Estadual de Ponta Grossa – UEPG, entidade autárquica da Administração Indireta do Poder Executivo Estadual, dotada de personalidade jurídica de direito público, criada pelo Governo do Estado do Paraná, através da Lei n. 6.034, de 6 de novembro de 1969 e Decreto n. 18.111, de 28 de janeiro de 1970, inscrita no CNPJ sob n. 80.257.355/0001-08, com sede na Avenida General Carlos Cavalcanti, 4748, na cidade de Ponta Grossa, Estado do Paraná, por meio do Programa de Mestrado Profissional em Direito, aprovado pela CAPES (Coordenadoria de Aperfeiçoamento de Pessoal de Nível Superior) na 194ª. Reunião do ConselhoTécnico-Científico da Educação Superior (CTC-ES), realizada de 11 a 15 de maio de 2020, reconhecido pelo Ministério da Educação (Portaria n. 576, de 7 de julho de 2020, publicada no Diário Oficial da União em 09/07/2020)e criado na UEPG, por meio da Portaria R. n. 2020.548, expedida em data de 20 de outubro de 2020, pela Reitoria da UEPG, com homologação final pela Resolução UNIV 2020.13, do Conselho Universitário, de 22/12/2020, neste ato representado pelo seu Coordenador, Professor Doutor
-        <span class="editable medium" contenteditable="true" data-placeholder="Nome do Coordenador"></span>,
+        A Universidade Estadual de Ponta Grossa – UEPG, entidade autárquica da Administração Indireta do Poder Executivo Estadual, dotada de personalidade jurídica de direito público, criada pelo Governo do Estado do Paraná, através da Lei n. 6.034, de 6 de novembro de 1969 e Decreto n. 18.111, de 28 de janeiro de 1970, inscrita no CNPJ sob n. 80.257.355/0001-08, com sede na Avenida General Carlos Cavalcanti, 4748, na cidade de Ponta Grossa, Estado do Paraná, por meio do Programa de Mestrado Profissional em Direito, aprovado pela CAPES (Coordenadoria de Aperfeiçoamento de Pessoal de Nível Superior) na 194ª. Reunião do 
+        Conselho Técnico-Científico da Educação Superior (CTC-ES), realizada de 11 a 15 de maio de 2020, reconhecido pelo Ministério da Educação (Portaria n. 576, de 7 de julho de 2020, publicada no Diário Oficial da União em 09/07/2020) e criado na UEPG, por meio da Portaria R. n. 2020.548, expedida em data de 20 de outubro de 2020, pela Reitoria da UEPG, com homologação final pela Resolução UNIV 2020.13, do Conselho Universitário, de 22/12/2020, neste ato representado pelo seu Coordenador, Professor Doutor
+        <span class="campo-fixo campo-nome" contenteditable="true" data-placeholder="Nome completo do Coordenador"></span>,
         doravante denominada UEPG.
     </p>
 
     <p>
         A Entidade/Instituição
-        <span class="editable large" contenteditable="true" data-placeholder="Nome da Entidade/Instituição"></span>,
+        <span class="campo-fixo campo-nome-longo" contenteditable="true" data-placeholder="Razão Social/Nome da Entidade ou Instituição"></span>,
         neste ato representada por
-        <span class="editable medium" contenteditable="true" data-placeholder="Nome do Representante Legal"></span>,
+        <span class="campo-fixo campo-nome" contenteditable="true" data-placeholder="Nome completo do Representante Legal"></span>,
         doravante denominada PARTE SUPERVISORA.
     </p>
 
     <p>
         O(a) mestrando(a)
-        <span class="editable large" contenteditable="true" data-placeholder="Nome completo do(a) discente"></span>,
+        <span class="campo-fixo campo-nome-longo" contenteditable="true" data-placeholder="Nome completo do(a) discente"></span>,
         portador(a) da Cédula de Identidade (RG) nº
-        <span class="editable small" contenteditable="true" data-placeholder="00.000.000-0"></span>,
+        <span class="campo-fixo campo-rg" contenteditable="true" data-placeholder="00.000.000-0"></span>,
         órgão emissor
-        <span class="editable small" contenteditable="true" data-placeholder="SSP/PR"></span>,
+        <span class="campo-fixo campo-orgao" contenteditable="true" data-placeholder="SSP/PR"></span>,
         CPF nº
-        <span class="editable medium" contenteditable="true" data-placeholder="000.000.000-00"></span>,
+        <span class="campo-fixo campo-cpf" contenteditable="true" data-placeholder="000.000.000-00"></span>,
         regularmente matriculado(a) no Curso de Mestrado Profissional em Direito da Universidade Estadual de Ponta Grossa sob o RA nº
-        <span class="editable small" contenteditable="true" data-placeholder="Nº RA"></span>,
+        <span class="campo-fixo campo-ra" contenteditable="true" data-placeholder="Nº do RA"></span>,
         resolve firmar o presente Termo de Compromisso.
     </p>
 
@@ -268,14 +473,14 @@
     <h3>Parágrafo Quarto</h3>
     <p>
         O estágio terá acompanhamento do(a) professor(a)-orientador(a)
-        <span class="editable large" contenteditable="true" data-placeholder="Nome do(a) orientador(a)"></span>,
+        <span class="campo-fixo campo-nome" contenteditable="true" data-placeholder="Nome completo do(a) orientador(a)"></span>,
         lotado(a) no Departamento de
-        <span class="editable medium" contenteditable="true" data-placeholder="Departamento"></span>.
+        <span class="campo-fixo campo-depto" contenteditable="true" data-placeholder="Nome do Departamento"></span>.
     </p>
     <h3>Parágrafo Quinto</h3>
     <p>
         O estágio será realizado perfazendo um total de
-        <input type="number" min="0" max="60" placeholder="0">
+        <input type="number" min="0" max="60" placeholder="0" class="campo-horas">
         <strong> horas (máx. 60 horas)</strong>, distribuídas por todo o período de imersão.
     </p>
 
@@ -288,13 +493,12 @@
     <h2>CLÁUSULA QUINTA – DOS TERMOS ADITIVOS</h2>
     <p>O presente Termo de Compromisso poderá ser alterado mediante termos aditivos.</p>
 
-    <!-- CLÁUSULA SEXTA CORRIGIDA -->
     <h2>CLÁUSULA SEXTA – DA VIGÊNCIA</h2>
     <p>O presente Termo terá vigência a partir de sua assinatura:</p>
     <p>
-        Início: <input type="date">
+        Início: <input type="date" class="campo-data">
         &nbsp;&nbsp;&nbsp;
-        Término: <input type="date">, com duração máxima de 2 (dois) anos.
+        Término: <input type="date" class="campo-data">, com duração máxima de 2 (dois) anos.
     </p>
     <p>
         Qualquer das partes pode encerrar o Termo a qualquer momento, de forma unilateral, desde que faça uma comunicação escrita e oficial à outra parte, com pelo menos 10 (dez) dias de antecedência.
@@ -314,7 +518,7 @@
     <p>E, por estarem justas e contratadas, firmam o presente Termo de Compromisso para que produza seus legais e jurídicos efeitos.</p>
 
     <div class="signature-area">
-        <p>Ponta Grossa, <input type="date"></p>
+        <p>Ponta Grossa, <input type="date" class="campo-data"></p>
         <div class="signature-grid">
             <div class="signature-box"><div class="signature-line">Coordenador do Programa</div></div>
             <div class="signature-box"><div class="signature-line">Representante da Unidade Supervisora</div></div>
@@ -323,9 +527,9 @@
         </div>
     </div>
 
-</div> <!-- fim .page -->
+</div>
 
-<!-- ===== RODAPÉ COM INFORMAÇÕES DE ACESSIBILIDADE ===== -->
+<!-- ✅ RODAPÉ DE ACESSIBILIDADE -->
 <div id="rodape-acessibilidade" class="acessibilidade-info" tabindex="-1">
     <div id="info-acessibilidade">
         <strong>📌 Acessibilidade – Atalhos do teclado (eMAG):</strong><br>
@@ -334,14 +538,14 @@
         • <kbd>Alt + 0</kbd> – Ir para as informações de acessibilidade<br>
         <br>
         <strong>🔊 Ferramentas disponíveis nesta página:</strong><br>
-        ✓ <strong>VLibras</strong> – Tradutor para Língua Brasileira de Sinais (clique no ícone flutuante)<br>
-        ✓ <strong>UserWay</strong> – Painel de acessibilidade com ajustes de contraste, fonte, espaçamento, leitor de tela etc. (clique no ícone de pessoa com deficiência)<br>
+        ✓ <strong>VLibras</strong> – Tradutor para Língua Brasileira de Sinais<br>
+        ✓ <strong>UserWay</strong> – Painel de acessibilidade<br>
         <br>
-        <em>Este documento segue as diretrizes da Lei Brasileira de Inclusão (LBI) e do Modelo de Acessibilidade em Governo Eletrônico (eMAG).</em>
+        <em>Este documento segue as diretrizes da LBI e eMAG.</em>
     </div>
 </div>
 
-<!-- ========== VLIBRAS ========== -->
+<!-- VLIBRAS -->
 <div vw class="enabled">
     <div vw-access-button class="active"></div>
     <div vw-plugin-wrapper>
@@ -355,16 +559,103 @@
     });
 </script>
 
-<!-- ========== USERWAY (versão gratuita) ========== -->
-<!-- 
-    Para usar o UserWay gratuitamente:
-    1. Acesse https://userway.org/ e cadastre seu site (plano gratuito).
-    2. Após o cadastro, você receberá um código de identificação (data-account).
-    3. Substitua "SEU_ID_AQUI" pelo seu código.
-    4. O widget aparecerá como um ícone flutuante (geralmente no canto inferior esquerdo).
--->
+<!-- USERWAY -->
 <script src="https://cdn.userway.org/widget.js" data-account="SEU_ID_AQUI"></script>
-<!-- IMPORTANTE: para testes, você pode remover a linha acima e ativar o UserWay apenas após obter seu ID. -->
+
+<!-- ✅ SOLUÇÃO DEFINITIVA: JavaScript para remover widgets antes da impressão -->
+<script>
+// Função que remove/oculta todos os widgets de acessibilidade
+function ocultarWidgetsAcessibilidade() {
+    // Lista de seletores para VLibras
+    const seletoresVLibras = [
+        '[vw]',
+        '.vw-access-button',
+        '.vw-plugin-wrapper',
+        '.vw-plugin-top-wrapper',
+        '.vpw-container',
+        '.vpw-iframe-container',
+        'div[style*="vlibras"]',
+        'iframe[src*="vlibras"]',
+        'iframe[src*="vlibras.gov"]'
+    ];
+    
+    // Lista de seletores para UserWay
+    const seletoresUserWay = [
+        '.uwy-userway',
+        '.userway-accessibility-widget',
+        '#userway',
+        'div[id*="userway"]',
+        'div[class*="userway"]',
+        'iframe[src*="userway"]'
+    ];
+    
+    // Ocultar todos os elementos encontrados
+    const todosSeletores = [...seletoresVLibras, ...seletoresUserWay];
+    todosSeletores.forEach(seletor => {
+        try {
+            document.querySelectorAll(seletor).forEach(el => {
+                el.style.display = 'none';
+                el.style.visibility = 'hidden';
+                el.style.opacity = '0';
+                el.style.height = '0';
+                el.style.width = '0';
+                el.style.position = 'absolute';
+                el.style.left = '-9999px';
+                el.style.top = '-9999px';
+                el.style.overflow = 'hidden';
+                el.style.zIndex = '-9999';
+            });
+        } catch(e) {
+            console.log('Seletor não encontrado:', seletor);
+        }
+    });
+    
+    // Também ocultar qualquer iframe de acessibilidade
+    document.querySelectorAll('iframe').forEach(iframe => {
+        const src = iframe.src || '';
+        if (src.includes('vlibras') || src.includes('userway') || src.includes('acessibilidade')) {
+            iframe.style.display = 'none';
+            iframe.style.visibility = 'hidden';
+        }
+    });
+    
+    // Ocultar botão de imprimir
+    const btnImprimir = document.querySelector('.btn-imprimir');
+    if (btnImprimir) btnImprimir.style.display = 'none';
+}
+
+// Função de impressão personalizada
+function imprimirDocumento() {
+    // Ocultar widgets antes de imprimir
+    ocultarWidgetsAcessibilidade();
+    
+    // Aguardar um momento para garantir que os elementos sejam ocultados
+    setTimeout(() => {
+        window.print();
+    }, 100);
+}
+
+// ✅ Evento ANTES da impressão (funciona em todos os navegadores modernos)
+window.addEventListener('beforeprint', function(event) {
+    ocultarWidgetsAcessibilidade();
+});
+
+// ✅ Evento DEPOIS da impressão (recarrega a página para restaurar os widgets)
+window.addEventListener('afterprint', function(event) {
+    // Recarrega a página para restaurar VLibras e UserWay
+    setTimeout(() => {
+        location.reload();
+    }, 500);
+});
+
+// ✅ Também intercepta Ctrl+P / Cmd+P
+document.addEventListener('keydown', function(e) {
+    // Ctrl+P (Windows/Linux) ou Cmd+P (Mac)
+    if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+        ocultarWidgetsAcessibilidade();
+    }
+});
+</script>
 
 </body>
 </html>
